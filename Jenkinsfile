@@ -35,26 +35,7 @@ pipeline {
               }
           }
       }
-    stage('SonaQube Scan') {
-       steps {
-           withSonarQubeEnv('SonarCloud') {
-             sh 'mvn sonar:sonar' -Dsonar.projectKey=$SONAR_PROJECT_KEY -Dsonar.login=$SONAR_TOKEN'
-       }
-     }
    }
-    stage('Check SonarQube Connection') {
-  steps {
-    script {
-      def sonarQubeServer = getSonarQubeServer('SonarCloud')
-      if (sonarQubeServer == null) {
-        error("SonarQube server not configured in Jenkins")
-      } else {
-        echo "SonarQube server URL: ${sonarQubeServer.url}"
-        echo "SonarQube server authentication token: ${sonarQubeServer.credentialsId}"
-           }
-         }  
-       }
-     }
-  }       
-} 
+ }       
+
     
