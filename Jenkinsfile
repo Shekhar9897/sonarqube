@@ -30,8 +30,8 @@ pipeline {
       }
     stage('SonaQube analysis') {
        steps {
-           withSonarQubeEnv('SOnarQube') {
-             sh 'mvn sonar:sonar'
+           withSonarQubeEnv('SOnarCloud') {
+             sh 'mvn sonar:sonar' -Dsonar.projectKey=$SONAR_PROJECT_KEY -Dsonar.login=$SONAR_TOKEN'
        }
      }
    }
