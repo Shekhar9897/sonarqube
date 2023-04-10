@@ -28,9 +28,9 @@ pipeline {
            sh 'mvn clean package'
          }
       }
-    stage('SonaQube analysis') {
+    stage('SonaQube Scan') {
        steps {
-           withSonarQubeEnv('SOnarCloud') {
+           withSonarQubeEnv('SonarCloud') {
              sh 'mvn sonar:sonar' -Dsonar.projectKey=$SONAR_PROJECT_KEY -Dsonar.login=$SONAR_TOKEN'
        }
      }
