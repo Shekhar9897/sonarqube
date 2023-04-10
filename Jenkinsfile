@@ -1,5 +1,9 @@
 pipeline {
    agent any
+   environment {
+     SONAR_TOKEN = '382891abd5e7819ae47b7d98f99cc5f106869c64'
+     SONAR_PROJECT_KEY = 'Shekhar9897_sonarqube'
+       }
    stages {
    stage('Installing Maven') {
       steps {
@@ -19,6 +23,18 @@ pipeline {
            sh 'mvn package'
          }
       }
+    stage('Build') {
+       steps {
+           sh 'mvn clean package'
+         }
+      }
+    stage('SonarQube Scan') {
+       steps{
+         withSonarQubeEnv('SonarCloud') {
+           sh 'mvn sonar:sonar -Dsonar.projectKey=$SONAR_PROJECT_KEY -Dsonar.login=$SONAR_TOKEN'
+         }
+      }
+    }
     stage('Deploying application ') {
        steps {
            script{
