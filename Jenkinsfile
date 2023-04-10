@@ -1,7 +1,7 @@
 pipeline {
    agent any
    environment {
-     SONAR_TOKEN = '382891abd5e7819ae47b7d98f99cc5f106869c64'
+     SONAR_TOKEN = 'b00f19582ca4b27228d2bda2354f883dba10c4b2'
      SONAR_PROJECT_KEY = 'Shekhar9897_sonarqube'
        }
    stages {
