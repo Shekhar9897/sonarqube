@@ -1,4 +1,6 @@
-stages {
+pipeline {
+   agent any
+   stages {
    stage('Installing Maven') {
       steps {
           sh 'sudo apt-get update -y && sudo apt-get upgrade -y'
@@ -16,8 +18,8 @@ stages {
        steps {
            sh 'mvn package'
          }
-    }
-}
-             
-  
+      }
+     }
+}       
+ 
     
