@@ -28,13 +28,13 @@ pipeline {
            sh 'mvn clean package'
          }
       }
-    stage('SonarQube Scan') {
-       steps{
-         withSonarQubeEnv('SonarCloud') {
-           sh 'mvn sonar:sonar -Dsonar.projectKey=$SONAR_PROJECT_KEY -Dsonar.login=$SONAR_TOKEN'
-         }
-      }
-    }
+    stage('SonaQube analysis') {
+       steps {
+           withSonarQubeEnv('SOnarQube') {
+             sh 'mvn sonar:sonar'
+       }
+     }
+   }
     
   }       
 } 
